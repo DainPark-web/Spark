@@ -32,9 +32,6 @@ tmp/
 .env.local
 .env.*.local
 
-# 바이너리 파일
-/server
-main
 
 # Go 디버그 파일
 __debug_bin
