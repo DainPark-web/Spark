@@ -1,0 +1,40 @@
+# Go 관련
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.work
+
+# Air 관련
+tmp/
+.air.toml
+
+# Go 빌드 및 의존성
+/vendor/
+/bin/
+/dist/
+
+# IDE 관련
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# 로그 파일
+*.log
+
+# 환경 변수 파일
+.env
+.env.local
+.env.*.local
+
+# 바이너리 파일
+/server
+main
+
+# Go 디버그 파일
+__debug_bin
