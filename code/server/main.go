@@ -7,10 +7,16 @@ import (
 	"net/http"
 )
 
+type Response struct {
+	Ok bool `json:"ok"`
+}
+
 func TrackIp(w http.ResponseWriter, r *http.Request) {
-	response := map[string]string{
-		"ip": r.RemoteAddr,
+	response := Response{
+		Ok: true,
 	}
+
+	fmt.Println(response)
 	json.NewEncoder(w).Encode(response)
 }
 
