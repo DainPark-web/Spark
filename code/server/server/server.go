@@ -16,6 +16,7 @@ func TrackIp(c *gin.Context) {
 		Ok: true,
 	}
 
+	// I neet to use JSON format later
 	c.IndentedJSON(http.StatusOK, response)
 }
 
