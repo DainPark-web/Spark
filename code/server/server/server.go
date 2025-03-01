@@ -1,43 +1,32 @@
 package server
 
 import (
-	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 type Response struct {
 	Ok bool `json:"ok"`
 }
 
-func TrackIp(w http.ResponseWriter, r *http.Request) {
+func TrackIp(c *gin.Context) {
 	response := Response{
 		Ok: true,
 	}
 
-	fmt.Println(response)
-	json.NewEncoder(w).Encode(response)
+	c.IndentedJSON(http.StatusOK, response)
 }
 
 func StartServer() {
 	port := 8080
-	port2 := 8081
 
-	// ServeMux1
-	mux := http.NewServeMux()
+	router := gin.Default()
 
-	mux.HandleFunc("/pings", TrackIp)
+	router.GET("/", TrackIp)
 
-	// Server1
-	go func() {
-		log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", port), mux))
-	}()
-
-	// Server2
-	go func() {
-		log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", port2), mux))
-	}()
+	router.Run(fmt.Sprintf(":%d", port))
 
 	select {}
 }
