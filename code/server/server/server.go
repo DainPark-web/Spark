@@ -7,6 +7,7 @@ import (
 )
 
 func StartServer() {
+
 	port := 8080
 
 	router := gin.Default()
