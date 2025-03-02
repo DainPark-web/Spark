@@ -24,7 +24,7 @@ func InitDB() {
 
 	DB = db
 
-	// 자동 마이그레이션
+	// Auto Migration
 	err = DB.AutoMigrate(
 		&models.User{},
 		&models.ChatRoom{},
