@@ -14,7 +14,10 @@ Spark offers the following features:
 - coming soon...
 
 ## Usage
-- coming soon...
+```bash
+cd/code/server
+air
+```
 
 ## Contributing
 - coming soon...
