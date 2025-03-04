@@ -1,23 +1,25 @@
 package database
 
 import (
-	"fmt"
 	"log"
-	"spark/config"
 	"spark/models"
 
-	"gorm.io/driver/postgres"
+	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
 
 var DB *gorm.DB
 
 func InitDB() {
-	config := config.GetDBConfig()
-	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable",
-		config.Host, config.User, config.Password, config.DBName, config.Port)
 
-	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	// Production : Postgres
+	// config := config.GetDBConfig()
+	// dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable",
+	// 	config.Host, config.User, config.Password, config.DBName, config.Port)
+	// db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	// Development : SQLite
+
+	db, err := gorm.Open(sqlite.Open("test.db"), &gorm.Config{})
 	if err != nil {
 		log.Fatal("Failed to connect to database:", err)
 	}
