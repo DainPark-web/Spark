@@ -16,6 +16,11 @@ Spark offers the following features:
 ## Usage
 ```bash
 cd/code/server
+
+# Downloads and installs all required dependencies
+go mod tidy
+
+# run server
 air
 ```
 
