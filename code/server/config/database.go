@@ -1,10 +1,7 @@
 package config
 
 import (
-	"log"
 	"os"
-
-	"github.com/joho/godotenv"
 )
 
 type DBConfig struct {
@@ -13,13 +10,6 @@ type DBConfig struct {
 	User     string
 	Password string
 	DBName   string
-}
-
-func LoadEnv() {
-	// .env 파일 로드
-	if err := godotenv.Load(); err != nil {
-		log.Fatal("Error loading .env file")
-	}
 }
 
 func GetDBConfig() *DBConfig {
