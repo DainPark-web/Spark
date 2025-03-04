@@ -2,17 +2,22 @@ package server
 
 import (
 	"fmt"
+	"os"
+
+	"spark/handlers/users"
 
 	"github.com/gin-gonic/gin"
 )
 
 func StartServer() {
 
-	port := 8080
+	port := os.Getenv("PORT")
 
 	router := gin.Default()
 
-	router.Run(fmt.Sprintf(":%d", port))
+	router.GET("/users", users.GetUser)
+
+	router.Run(fmt.Sprintf(":%v", port))
 
 	select {}
 }
