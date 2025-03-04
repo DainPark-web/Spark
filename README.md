@@ -11,9 +11,6 @@ Spark offers the following features:
 
 
 ## Installation and Running
-- coming soon...
-
-## Usage
 ```bash
 cd/code/server
 
