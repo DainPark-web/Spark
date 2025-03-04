@@ -19,9 +19,21 @@ cd/code/server
 
 # Downloads and installs all required dependencies
 go mod tidy
-
+```
+### Run server using air
+```bash
 # run server
+# if you are using air
+air init
 air
+```
+```toml
+cmd = "go build -o ./tmp/main ./cmd"
+```
+
+### Run server using go
+```bash
+go run cmd/main.go
 ```
 
 ## Contributing
