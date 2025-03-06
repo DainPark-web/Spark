@@ -34,5 +34,4 @@ func StartServer() {
 
 	router.Run(fmt.Sprintf(":%v", port))
 
-	select {}
 }
