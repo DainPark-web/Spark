@@ -1,13 +1,17 @@
 # Spark
 
-Spark is a simple web service built using the Go programming language. This project started as a toy project to learn and experiment with Go's web server capabilities. Spark provides basic HTTP server functionality and includes the ability to run multiple servers simultaneously.
+I built Spark as a fun way to learn Go while making something useful. It started as a basic web server experiment but grew into a full dating app. I focused on using Go's strengths - like fast performance and easy concurrency - to create a reliable platform where people can meet and connect with others.
 
 ## Project Overview
 
 Spark offers the following features:
-- A simple web server to handle HTTP requests
-- Ability to run servers on multiple ports simultaneously
-- Basic routing functionality
+- RESTful API server built with Gin framework
+- User authentication and profile management
+- CORS configuration for secure cross-origin requests
+- Environment-based configuration for development and production
+- Trusted proxy support for production deployments
+- Database integration for user data persistence
+- Structured error handling and status responses
 
 
 ## Installation and Running
