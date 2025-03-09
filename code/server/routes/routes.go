@@ -16,6 +16,7 @@ func SetupRoutes(r *gin.Engine) {
 func SetVersionRoutes(r *gin.RouterGroup) {
 	version1 := r.Group("/v1")
 	{
+		// User Routes
 		SetUserRoutes(version1)
 	}
 }
@@ -23,6 +24,7 @@ func SetVersionRoutes(r *gin.RouterGroup) {
 func SetUserRoutes(r *gin.RouterGroup) {
 	user := r.Group("/users")
 	{
-		user.GET("/", users.GetUser)
+		user.GET("/", users.GetUsers)
+		user.GET("/:id", users.GetUser)
 	}
 }

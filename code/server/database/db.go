@@ -41,11 +41,11 @@ func InitDB() {
 	// Auto Migration
 	err := DB.AutoMigrate(
 		&models.User{},
-		&models.ChatRoom{},
-		&models.Message{},
-		&models.Like{},
-		&models.PartnerMatch{},
-		&models.FeedbackQuestion{},
+		// &models.ChatRoom{},
+		// &models.Message{},
+		// &models.Like{},
+		// &models.PartnerMatch{},
+		// &models.FeedbackQuestion{},
 	)
 	if err != nil {
 		log.Fatal("Failed to migrate database:", err)
