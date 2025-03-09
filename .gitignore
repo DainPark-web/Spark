@@ -4,6 +4,7 @@
 *.swp
 *.swo
 .DS_Store
+.cursorignore
 
 
 # Memo
