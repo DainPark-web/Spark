@@ -24,7 +24,17 @@ func SetVersionRoutes(r *gin.RouterGroup) {
 func SetUserRoutes(r *gin.RouterGroup) {
 	user := r.Group("/users")
 	{
+		// get all users
 		user.GET("/", users.GetUsers)
+		// get user by id
 		user.GET("/:id", users.GetUser)
+		// create user
+		user.POST("/", users.SignUp)
+		// login
+		user.POST("/login", users.Login)
+		// logout
+		user.POST("/logout", users.Logout)
+		// get me
+		user.GET("/me", users.Getme)
 	}
 }

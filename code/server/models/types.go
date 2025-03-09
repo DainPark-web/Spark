@@ -1,13 +1,23 @@
 package models
 
 import (
+	"time"
+
 	"gorm.io/gorm"
+)
+
+type Gender string
+
+const (
+	Man   Gender = "man"
+	Woman Gender = "woman"
 )
 
 // User Model
 type User struct {
 	gorm.Model             // ID, CreatedAt, UpdatedAt, DeletedAt 포함
 	Name            string `json:"name" gorm:"not null"`
+	Password        string `json:"-" gorm:"not null"`
 	ProfileImage    string `json:"profile_image" gorm:"null"`
 	IsProfileLocked bool   `json:"is_profile_locked" gorm:"default:false"`
 	Description     string `json:"description" gorm:"null"`
@@ -15,9 +25,28 @@ type User struct {
 	Weight          int    `json:"weight" gorm:"null"`
 	Job             string `json:"job" gorm:"null"`
 	Location        string `json:"location" gorm:"null"`
-	Gender          string `json:"gender" gorm:"null"`
-
+	Gender          Gender `json:"gender" gorm:"null"`
 	// ChatRooms       []ChatRoom `json:"chat_rooms" gorm:"many2many:user_chat_rooms"`
+}
+
+type TinyUser struct {
+	ID           uint   `json:"id"`
+	Name         string `json:"name"`
+	ProfileImage string `json:"profile_image"`
+	Description  string `json:"description"`
+}
+
+// // PartnerMatch Model
+type PartnerMatch struct {
+	gorm.Model
+	User1ID       uint      `json:"user1_id" gorm:"uniqueIndex:idx_user1_user2"`
+	User2ID       uint      `json:"user2_id" gorm:"uniqueIndex:idx_user1_user2"`
+	Status        string    `json:"status" gorm:"default:'pending'"` // "pending", "accepted", "rejected"
+	ExpiresAt     time.Time `json:"expires_at"`                      // Match expiration time
+	User1         User      `json:"-" gorm:"foreignKey:User1ID"`
+	User2         User      `json:"-" gorm:"foreignKey:User2ID"`
+	User1Accepted bool      `json:"user1_accepted" gorm:"default:false"`
+	User2Accepted bool      `json:"user2_accepted" gorm:"default:false"`
 }
 
 // // ChatRoom Model
@@ -50,17 +79,6 @@ type User struct {
 // 	ExpiresAt  time.Time `json:"expires_at"`                      // Expires after 1 week
 // 	FromUser   User      `json:"-" gorm:"foreignKey:FromUserID"`
 // 	ToUser     User      `json:"-" gorm:"foreignKey:ToUserID"`
-// }
-
-// // PartnerMatch Model
-// type PartnerMatch struct {
-// 	gorm.Model
-// 	User1ID   uint      `json:"user1_id" gorm:"not null"`
-// 	User2ID   uint      `json:"user2_id" gorm:"not null"`
-// 	Status    string    `json:"status" gorm:"default:'pending'"` // "pending", "accepted", "rejected"
-// 	ExpiresAt time.Time `json:"expires_at"`                      // Match expiration time
-// 	User1     User      `json:"-" gorm:"foreignKey:User1ID"`
-// 	User2     User      `json:"-" gorm:"foreignKey:User2ID"`
 // }
 
 // // FeedbackQuestion Model
