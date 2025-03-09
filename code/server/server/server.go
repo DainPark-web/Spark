@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"spark/config"
-	"spark/handlers/users"
+	"spark/routes"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -21,17 +21,17 @@ func StartServer() {
 	}
 
 	// Gin Default(Logger, Recovery)
-	router := gin.Default()
+	r := gin.Default()
 
 	// Proxy
-	router.SetTrustedProxies(config.Proxies)
+	r.SetTrustedProxies(config.Proxies)
 
 	// Cors
-	router.Use(cors.New(config.Cors))
+	r.Use(cors.New(config.Cors))
 
-	// router
-	router.GET("/users", users.GetUser)
+	// routers
+	routes.SetupRoutes(r)
 
-	router.Run(fmt.Sprintf(":%v", port))
+	r.Run(fmt.Sprintf(":%v", port))
 
 }
