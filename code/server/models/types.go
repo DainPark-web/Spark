@@ -16,6 +16,7 @@ const (
 // User Model
 type User struct {
 	gorm.Model             // ID, CreatedAt, UpdatedAt, DeletedAt 포함
+	Email           string `json:"email" gorm:"not null"`
 	Name            string `json:"name" gorm:"not null"`
 	Password        string `json:"-" gorm:"not null"`
 	ProfileImage    string `json:"profile_image" gorm:"null"`
