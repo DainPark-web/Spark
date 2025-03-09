@@ -21,7 +21,6 @@ func Login(c *gin.Context) {
 }
 
 func SignUp(c *gin.Context) {
-
 	newUser := models.User{
 		Email:    c.PostForm("email"),
 		Name:     c.PostForm("name"),
@@ -35,6 +34,7 @@ func SignUp(c *gin.Context) {
 
 	existingUser := models.User{}
 	database.DB.Where("email = ?", newUser.Email).First(&existingUser)
+
 	if existingUser.ID != 0 {
 		c.IndentedJSON(http.StatusBadRequest, gin.H{"message": "User with this email already exists"})
 		return

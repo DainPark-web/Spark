@@ -15,18 +15,20 @@ const (
 
 // User Model
 type User struct {
-	gorm.Model             // ID, CreatedAt, UpdatedAt, DeletedAt 포함
-	Email           string `json:"email" gorm:"not null"`
-	Name            string `json:"name" gorm:"not null"`
-	Password        string `json:"-" gorm:"not null"`
-	ProfileImage    string `json:"profile_image" gorm:"null"`
-	IsProfileLocked bool   `json:"is_profile_locked" gorm:"default:false"`
-	Description     string `json:"description" gorm:"null"`
-	Height          int    `json:"height" gorm:"null"`
-	Weight          int    `json:"weight" gorm:"null"`
-	Job             string `json:"job" gorm:"null"`
-	Location        string `json:"location" gorm:"null"`
-	Gender          Gender `json:"gender" gorm:"null"`
+	ID              uint      `json:"id" gorm:"primaryKey"`
+	CreatedAt       time.Time `json:"created_at" gorm:"autoCreateTime"`
+	UpdatedAt       time.Time `json:"updated_at" gorm:"autoUpdateTime"`
+	Email           string    `json:"email" gorm:"not null"`
+	Name            string    `json:"name" gorm:"not null"`
+	Password        string    `json:"-" gorm:"not null"`
+	ProfileImage    string    `json:"profile_image" gorm:"null"`
+	IsProfileLocked bool      `json:"is_profile_locked" gorm:"default:false"`
+	Description     string    `json:"description" gorm:"null"`
+	Height          int       `json:"height" gorm:"null"`
+	Weight          int       `json:"weight" gorm:"null"`
+	Job             string    `json:"job" gorm:"null"`
+	Location        string    `json:"location" gorm:"null"`
+	Gender          Gender    `json:"gender" gorm:"null"`
 	// ChatRooms       []ChatRoom `json:"chat_rooms" gorm:"many2many:user_chat_rooms"`
 }
 
